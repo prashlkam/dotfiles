@@ -26,7 +26,7 @@ following disabilities are covered...
 Instructions for Usage
 ------------------------
 
- * these config files can be used only in arcoLinux (not with any other distro)
+these config files can be used only in arcoLinux (not with any other distro)
  
   - have arcoLinux installed on your system
  
@@ -39,7 +39,7 @@ Instructions for Usage
   - log out from your current desktop / TWM and log back in to the TWM [now you should have a minimum degree of support for Assistive Technology within the TWM]
  
   
- * if you have some other distro or don't have all the necessary pkgs installed - you can follow the below mentioned steps...
+if you have some other distro or don't have all the necessary pkgs installed - you can follow the below mentioned steps...
   
   - install the distro you want
   
