@@ -86,7 +86,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sysadmin = {
     isNormalUser = true;
-    group = "sysadmin";
+    group = "users";
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   #   packages = with pkgs; [
   #     firefox
@@ -110,6 +110,9 @@
     audacious
     vlc
     rosegarden
+    brave
+    firefox
+    vivaldi
     libreoffice-fresh
   ];
 
