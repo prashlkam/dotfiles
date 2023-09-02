@@ -107,12 +107,15 @@
     dolphin
     sublime
     kate
+    scribus
     audacious
     vlc
     rosegarden
-    brave
     firefox
+    brave
     vivaldi
+    kdenlive
+    obs-studio
     libreoffice-fresh
   ];
 
