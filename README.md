@@ -1,55 +1,56 @@
+
 # dotfiles
 a repo containing dot config files for various Tiling Window Managers - in order to make them more Accessible.....
 
-My ArcoLinux dot config files for various TWMs
+My NixOS config files for System recovery
 ------------------------------------------------
 
-following TWMs are covered...
+It is possible to restore the entire system to its former glory - just by using the NixOS Configuration file...
 
- * awesome-wm
- * bspwm
- * i3-wm
- * ice-wm
- * jwm
- * qtile
- 
-following disabilities are covered...
+Keep the most up-to-date version of the 'configuration.nix' file in your github / gitlab repo...
 
- - motor disabilities - keyboard / mouse support (right from Startup)
- 
- - motor disabilities - on screen keyboard - partly working 
- 
- - low vision [kmag known to work - after it is launched]
- 
- - Screen Reader - to be updated...
- 
+Whenever there's a problem with your system - you can download the config file from your repo - and do a fresh install (as per instructions given below)... 98% of your previous system can be restored by using this method...
+
 Instructions for Usage
 ------------------------
 
-these config files can be used only in arcoLinux (not with any other distro)
- 
-  - have arcoLinux installed on your system
- 
-  - have all necessary pkgs / dependencies installed
+these config files can be used only in NixOS (not with any other distro)
+
+  - boot from the NixOS live iso - but do not run the installer (if you have your NixOS config file)
+    
+  - download the configuration.nix file from your online repo - and save it in your home dir
+
+  - mount your disk partitions and format them as required... I did the following...
+    ```
+    # I use cfdisk / cgdisk to partition the disk as needed...
+    # use mkfs to format the newly created partitions
+    
+    mount /dev/sdb12 /mnt
+    mkdir /mnt/boot
+    mkdir /mnt/home
+    mount /dev/sdb1 /mnt/boot
+    mount /dev/sdb13 /mnt/home
+    ```
+  - autogenerate NixOS config files - in the next step, we will replace the configuration.nix file with the one we have in our home dir... For now, generate the config files as follows...
+   ```
+   nixos-generate-config --root /mnt
+   ```
+  - now copy the configuration.nix file in your home dir - to its Recognized place in the system...
+   ```
+   cp ./configuration.nix /mnt/etc/nixos/
+   ```
+  - lastly, run the installation...
+   ```
+   nixos-install
+   ```
+[if your config files are well written - the install should proceed smoothly.]
+
+  - at the end of the install - we need to set the root passwd
   
-  - copy the config.tar.gz file from this github repo - to your home folder
+  - after the install - reboot the system and do the following...
+     - set passwds for users created during the install process]
+     - do some minor tweaks / configurations as needed
   
-  - extract the above file - overwrite any existing config files
+  - the system should now be ready to use...
+  - the system should be ready now... 
   
-  - log out from your current desktop / TWM and log back in to the TWM [now you should have a minimum degree of support for Assistive Technology within the TWM]
- 
-  
-if you have some other distro or don't have all the necessary pkgs installed - you can follow the below mentioned steps...
-  
-  - install the distro you want
-  
-  - have all necessary pkgs / dependencies installed
-  
-  - copy the config.tar.gz file from this github repo - to your home/Documents folder
-  
-  - extract the above file - to the Documents folder
-  
-  - now do a diff between your existing config files (in your home/.config/ folder) and the newly extracted files (in your home/Documents/.config/ folder)
-   
-  - make the necessary changes to your existing config files
-   
