@@ -140,3 +140,20 @@ once the system reboots - you're taken through the OOBE wizard...
   ```
   oobe\bypassNRO
   ```
+the system will reboot - and resume the OOBE setup...
+
+- now press `Shift + f10` again to open powershell and type,,,
+  ```
+  ipconfig /release
+  ```
+this disconnects you from network. Post this point - you have to proceed with limitted win 11 setup...
+
+- when asked to connect to network - select the option `I have no internet` 
+
+- when asked to create a Microsoft Account - select the option `create a Local account` 
+
+proceed with the rest of the OOBE setup as usual.
+
+At the end - you should have a custom - but stock install of Windows 11 pro...
+
+  
