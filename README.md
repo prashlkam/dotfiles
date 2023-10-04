@@ -120,9 +120,9 @@ Now format all the disks as follows...
   ```
   for fs=ntfs quick
   ```
-- assign drive letter `d` to it...
+- assign drive letter `f` to it...
   ```
-  assign letter=d
+  assign letter=f
   ```
 partition all other drives as per your requirements.
 
