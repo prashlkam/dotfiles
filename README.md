@@ -30,7 +30,7 @@ Once the iso boots - we get the default installer. Don't click Next or Install. 
    ```
    sel dis <x>
    ```
-   [where <x> is typically the number of the disk you want to use - such as 0, 1, 2 etc.]
+   [where `<x>` is typically the number of the disk you want to use - such as 0, 1, 2 etc.]
  - type the below command to clear all partitions
    ```
    clean
