@@ -52,3 +52,24 @@ these config files can be used only in NixOS (not with any other distro)
      - do some minor tweaks / configurations as needed
   
   - the system should now be ready to use...  
+
+Update and Mainrainance
+---------------------------
+
+to Update the system - use the following command...
+```
+sudo nixos-rebuild switch --upgrade
+```
+to clear unused packages / previous generations - use this command...
+```
+sudo nix-collect-garbage
+```
+to install new packages - follow these steps...
+ - search for the pkg in nixpkgs search
+ - add the desired pkg to your config file (packages.nix in our case)
+ - if services need to be enabled - add relevant option in main config file
+ - do a 'rebuild switch' - using the following command
+   ```
+   sudo nixos-rebuild switch
+   ```
+Note: ALWAYS KEEP UP-TO-DATE COPIES OF YOUR CONFIG FILES IN A ONLINE GIT REPO... YOU'RE NOW INVINCIBLE !
