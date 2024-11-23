@@ -2,7 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+# { config, pkgs, ... }:
+{ config, pkgs ? import <nixpkgs> {}, ... }:
 
 {
   imports =
@@ -12,7 +13,7 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sdb";
+  boot.loader.grub.device = "/dev/nvme0n1";
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos-box01"; # Define your hostname.
@@ -90,9 +91,9 @@
   users.users.sysadmin = {
     isNormalUser = true;
     description = "sysadmin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "users"] ;
     packages = with pkgs; [
-    #  thunderbird
+    # user pkgs... 
     ];
   };
 
@@ -104,42 +105,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git
-    vim 
-    vifm
-    ranger
-    mc
-    elinks
-    wget
-    pcmanfm
-    dolphin
-    sublime
-    kate
-    cherrytree
-    scribus
-    vscodium
-    geany
-    netbeans
-    audacious
-    vlc
-    clementine
-    rosegarden
-    firefox
-    brave
-    vivaldi
-    chromium
-    kdenlive
-    obs-studio
-    openshot-qt
-    libreoffice-fresh
-    onlyoffice-bin
-    freeoffice
-    abiword
-    gnumeric
-    gnucash
-  ];
+  
+  # environment.systemPackages = with pkgs; [];
+  environment.systemPackages = import ./packages.nix pkgs;
+
+  # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -151,6 +121,11 @@
 
   # List services that you want to enable:
 
+  # enable ollama with cuda
+  services.ollama = {
+  	enable = true;
+  	acceleration = false;
+  };
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

@@ -1,0 +1,36 @@
+pkgs: with pkgs;
+  [ git
+    vim 
+    vifm
+    ranger
+    mc
+    elinks
+    wget
+    pcmanfm
+    dolphin
+    sublime
+    kate
+    cherrytree
+    scribus
+    vscodium
+    geany
+    netbeans
+    audacious
+    vlc
+    clementine
+    rosegarden
+    firefox
+    brave
+    vivaldi
+    chromium
+    kdenlive
+    obs-studio
+    openshot-qt
+    libreoffice-fresh
+    onlyoffice-bin
+    freeoffice
+    abiword
+    gnumeric
+    gnucash
+    ollama
+  ]
