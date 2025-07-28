@@ -13,7 +13,7 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
+  boot.loader.grub.device = "/dev/sdb";
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos-box01"; # Define your hostname.
@@ -69,7 +69,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -91,7 +91,7 @@
   users.users.sysadmin = {
     isNormalUser = true;
     description = "sysadmin";
-    extraGroups = [ "networkmanager" "wheel" "users"] ;
+    extraGroups = [ "networkmanager" "wheel" "users" "podman"] ;
     packages = with pkgs; [
     # user pkgs... 
     ];
@@ -129,6 +129,19 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+# Enable common container config files in /etc/containers
+virtualisation.containers.enable = true;
+virtualisation = {
+  podman = {
+    enable = true;
+    # Create a `docker` alias for podman, to use it as a drop-in replacement
+    dockerCompat = true;
+    # Required for containers under podman-compose to be able to talk to each other.
+    defaultNetwork.settings.dns_enabled = true;
+  };
+};
+
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -141,6 +154,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }

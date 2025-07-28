@@ -7,9 +7,9 @@ pkgs: with pkgs;
     elinks
     wget
     pcmanfm
-    dolphin
+    kdePackages.dolphin
     sublime
-    kate
+    kdePackages.kate
     cherrytree
     scribus
     vscodium
@@ -17,13 +17,14 @@ pkgs: with pkgs;
     netbeans
     audacious
     vlc
+    smplayer 
     clementine
     rosegarden
     firefox
     brave
     vivaldi
     chromium
-    kdenlive
+    kdePackages.kdenlive
     obs-studio
     openshot-qt
     libreoffice-fresh
@@ -33,4 +34,5 @@ pkgs: with pkgs;
     gnumeric
     gnucash
     ollama
+    podman
   ]
