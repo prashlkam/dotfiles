@@ -158,6 +158,13 @@ once the system reboots - you're taken through the Out Of Box Experience (OOBE) 
 
 - just before it asks to connect to network - press `Shift + f10` to open powershell again and type,,,
   ```
+  start ms-cxh:localonly
+  ```
+this should take you directly to the Local User create dialog box. Enter the Uusername, passwd & the 3 passswd hint questions / answers. You're done. You're directly taken to the Windoows Desktop.
+[this method is working - as of Win 11 build 25H2]
+
+Alternatively, enter the following command to proceed further...
+  ```
   oobe\bypassNRO
   ```
 the system will reboot - and resume the OOBE setup...
